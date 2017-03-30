@@ -27,7 +27,7 @@ class VpnAuthGuard implements Guard
 {
     use GuardHelpers;
 
-    private $host = '127.0.0.1';
+    private $host = '127.0.0.1:32080';
     private $secure = false;
 
     /**

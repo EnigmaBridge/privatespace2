@@ -34,13 +34,15 @@ class IndexController extends Controller
      */
     public function show()
     {
-        $data = [
-            'private_space' => env('APP_PRIVATE_SPACE_NAME')
-        ]; // ['user' => User::findOrFail($id)]
-
         $user = Auth::user();
         $loggedIn = Auth::check();
-        Log::info('Index shown, user: ' . $user . ' logged in: ' . $loggedIn);
+        Log::info('Index shown, user: ' . $user->getAuthIdentifierName() . ' logged in: ' . $loggedIn);
+
+        $data = [
+            'private_space' => env('APP_PRIVATE_SPACE_NAME'),
+            'user' => $user,
+            'logged_in' => $loggedIn
+        ]; // ['user' => User::findOrFail($id)]
 
         return view('index', $data);
     }
