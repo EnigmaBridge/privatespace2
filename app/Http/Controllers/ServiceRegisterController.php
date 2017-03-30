@@ -2,22 +2,22 @@
 /**
  * Created by PhpStorm.
  * User: dusanklinec
- * Date: 29.03.17
- * Time: 15:05
+ * Date: 30.03.17
+ * Time: 15:27
  */
 
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 
-class IndexController extends Controller
+class ServiceRegisterController extends Controller
 {
-    // use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+     //use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
      * IndexController constructor.
@@ -34,17 +34,22 @@ class IndexController extends Controller
      */
     public function show()
     {
+        if (Gate::denies('is-admin')) {
+            Log::info('Non-admin user editing services');
+            return redirect()->intended('/');
+        }
+
         $user = Auth::user();
         $loggedIn = Auth::check();
-        Log::info('Index shown, user: ' . $user->getAuthIdentifierName() . ' logged in: ' . $loggedIn);
+
 
         $data = [
             'private_space' => env('APP_PRIVATE_SPACE_NAME'),
             'user' => $user,
-            'logged_in' => $loggedIn,
-        ]; // ['user' => User::findOrFail($id)]
+            'logged_in' => $loggedIn
+        ];
 
-        return view('index', $data);
+        return view('services-edit', $data);
     }
 
 }

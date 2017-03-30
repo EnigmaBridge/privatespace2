@@ -16,5 +16,6 @@ Route::get('/old', function () {
 });
 
 Route::get('/', 'IndexController@show');
+Route::get('/services-edit', 'ServiceRegisterController@show');
 
 

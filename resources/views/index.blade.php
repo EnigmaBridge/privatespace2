@@ -79,12 +79,21 @@
     <hr class="separator">
     <div class="row">
         <div class="col-lg-12">
-            <p>
+            <div>
+
                 <a href="https://{{ $private_space }}:8442" class="btn btn-sq-lg btn-success" id="spacelink"
                    style="width:150px">
                     <i class="fa fa-bolt fa-5x"></i><br/>
                     <br>Manage Users
                 </a>
+
+
+                @if (Gate::allows('is-admin'))
+                    <hr class="separator">
+                    <div class="admin-buttons">
+                        <a href="{{ url('/services-edit') }}" class="btn btn-info" role="button">Edit services list</a>
+                    </div>
+                @endif
 
             <hr class="separator">
             <a href="https://enigmabridge.freshdesk.com/solution/categories/19000098261"
@@ -102,7 +111,7 @@
                 <i class="fa fa-envelope-o fa-5x"></i><br/>
                 <br>Request Help
             </a>
-            </p>
+            </div>
         </div>
 
     </div>

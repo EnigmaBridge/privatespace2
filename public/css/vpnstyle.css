@@ -115,3 +115,6 @@ button {
     background-image: url(../images/status_offline.png);
 }
 
+.admin-buttons {
+    margin-top: 10px;
+}
