@@ -97,18 +97,18 @@
 
             <hr class="separator">
             <a href="https://enigmabridge.freshdesk.com/solution/categories/19000098261"
-               class="btn btn-sq-lg btn-warning" style="width:150px">
-                <i class="fa fa-group fa-5x"></i><br/>
+               class="btn btn-sq btn-warning" style="width:150px">
+                <i class="fa fa-group fa-3x"></i><br/>
                 Manuals<br>and Support
             </a>
 
-            <a href="https://enigmabridge.com/spaces" class="btn btn-sq-lg btn-info" style="width:150px">
-                <i class="fa fa-heart fa-5x"></i><br/>
+            <a href="https://enigmabridge.com/spaces" class="btn btn-sq btn-info" style="width:150px">
+                <i class="fa fa-heart fa-3x"></i><br/>
                 <br>Enigma Bridge
             </a>
-            <a href="https://enigmabridge.freshdesk.com/helpdesk/tickets/new" class="btn btn-sq-lg btn-danger"
+            <a href="https://enigmabridge.freshdesk.com/helpdesk/tickets/new" class="btn btn-sq btn-danger"
                style="width:150px">
-                <i class="fa fa-envelope-o fa-5x"></i><br/>
+                <i class="fa fa-envelope-o fa-3x"></i><br/>
                 <br>Request Help
             </a>
             </div>

@@ -118,3 +118,14 @@ button {
 .admin-buttons {
     margin-top: 10px;
 }
+
+.btn.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.after-add-more {
+    margin-top: 10px;
+
+}
+
