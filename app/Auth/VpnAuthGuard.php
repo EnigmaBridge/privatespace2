@@ -159,6 +159,10 @@ class VpnAuthGuard implements Guard
             }
 
             $this->user = new User($decoded);
+
+            // Admin checking
+            $this->user->setIsAdmin(env('APP_ADMIN') == $this->user->getEmail());
+
             return $this->user;
 
         } catch (AuthServerFailException $e){

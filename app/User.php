@@ -16,6 +16,7 @@ class User implements Authenticatable
     protected $local_ip;
     protected $remote_ip;
     protected $remote_port;
+    protected $is_admin;
 
     /**
      * User constructor - from the decoded json vpn auth response
@@ -92,4 +93,30 @@ class User implements Authenticatable
     {
         return null;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    /**
+     * @param mixed $is_admin
+     */
+    public function setIsAdmin($is_admin)
+    {
+        $this->is_admin = $is_admin;
+    }
+
+
 }

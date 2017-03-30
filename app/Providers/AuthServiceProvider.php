@@ -28,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // Vpn auth Guard
         Auth::extend('vpnauth', function ($app, $name, array $config) {
             $api = $this->app->make('App\Auth\VpnAuthGuard');
             $api->setName('vpnauth');
@@ -35,6 +36,11 @@ class AuthServiceProvider extends ServiceProvider
             return $api;
 
             //return new JwtGuard(Auth::createUserProvider($config['provider']));
+        });
+
+        // Is admin Gate
+        Gate::define('is-admin', function ($user) {
+            return $user->getIsAdmin();
         });
     }
 }
