@@ -80,7 +80,7 @@
     <div class="row">
         <div class="col-lg-12">
             <p>
-                <a href="https://stevenage4.umph.io:8442" class="btn btn-sq-lg btn-success" id="spacelink"
+                <a href="https://{{ $private_space }}:8442" class="btn btn-sq-lg btn-success" id="spacelink"
                    style="width:150px">
                     <i class="fa fa-bolt fa-5x"></i><br/>
                     <br>Manage Users
