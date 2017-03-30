@@ -3,27 +3,93 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
+// use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User implements Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $cname;
+    protected $email;
+    protected $connected;
+    protected $local_ip;
+    protected $remote_ip;
+    protected $remote_port;
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * User constructor - from the decoded json vpn auth response
+     * @param $decoded
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function __construct($decoded)
+    {
+        $this->cname = $decoded->user->cname;
+        $this->email = $decoded->user->email;
+        $this->connected = intval($decoded->user->connected) > 0;
+        $this->local_ip = $decoded->user->client_local_ip;
+        $this->remote_ip = $decoded->user->client_remote_ip;
+        $this->remote_port = $decoded->user->client_remote_port;
+    }
+
+    /**
+     * Get the name of the unique identifier for the user.
+     *
+     * @return string
+     */
+    public function getAuthIdentifierName()
+    {
+        return $this->cname;
+    }
+
+    /**
+     * Get the unique identifier for the user.
+     *
+     * @return mixed
+     */
+    public function getAuthIdentifier()
+    {
+        $inthash = intval(substr(md5($this->cname), 0, 8), 16);
+        return $inthash;
+    }
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return md5($this->cname);
+    }
+
+    /**
+     * Get the token value for the "remember me" session.
+     *
+     * @return string
+     */
+    public function getRememberToken()
+    {
+        return null;
+    }
+
+    /**
+     * Set the token value for the "remember me" session.
+     *
+     * @param  string $value
+     * @return void
+     */
+    public function setRememberToken($value)
+    {
+        // nope
+    }
+
+    /**
+     * Get the column name for the "remember me" token.
+     *
+     * @return string
+     */
+    public function getRememberTokenName()
+    {
+        return null;
+    }
 }

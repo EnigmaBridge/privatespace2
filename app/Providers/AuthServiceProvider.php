@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Auth\VpnAuthGuard;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Log;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +28,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Auth::extend('vpnauth', function ($app, $name, array $config) {
+            $api = $this->app->make('App\Auth\VpnAuthGuard');
+            $api->setName('vpnauth');
+            Log::info('VPNAuth created');
+            return $api;
+
+            //return new JwtGuard(Auth::createUserProvider($config['provider']));
+        });
     }
 }
