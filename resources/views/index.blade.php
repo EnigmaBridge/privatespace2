@@ -84,7 +84,7 @@
     <!-- <h2 style="color:#00a7d7">Private Space Use and Management</h2> -->
 
     <hr class="separator">
-    <div class="row">
+    <div class="row privatespace-services">
         <div class="col-lg-12">
             <div>
 
