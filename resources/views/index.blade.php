@@ -95,33 +95,30 @@
                 </a>
 
                 @foreach($tiles as $k => $v)
-                    <a href="{{ $v->tile_link }}" class="btn btn-sq-lg btn-success" id="spacelink"
-                       style="width:150px">
+                    <a href="{{ $v->tile_link }}" class="btn btn-sq-lg btn-success" id="spacelink">
                         <i class="fa {{ $v->tile_icon }} fa-5x"></i><br/>
                         <br>{{ $v->tile_name }}
                     </a>
                 @endforeach
 
                 @if (Gate::allows('is-admin'))
-                    <hr class="separator">
-                    <div class="admin-buttons">
-                        <a href="{{ url('/services-edit') }}" class="btn btn-info" role="button">Edit services list</a>
-                    </div>
+                    <a href="{{ url('/services-edit') }}" class="btn btn-default" target="_blank">
+                        <i class="fa fa-th-large fa-5x"></i><br/>
+                        <br>Change tiles</a>
                 @endif
 
             <hr class="separator">
             <a href="https://enigmabridge.freshdesk.com/solution/categories/19000098261"
-               class="btn btn-sq btn-warning" style="width:150px">
+               class="btn btn-sq btn-warning">
                 <i class="fa fa-group fa-3x"></i><br/>
                 Manuals<br>and Support
             </a>
 
-            <a href="https://enigmabridge.com/spaces" class="btn btn-sq btn-info" style="width:150px">
+            <a href="https://enigmabridge.com/spaces" class="btn btn-sq btn-info">
                 <i class="fa fa-heart fa-3x"></i><br/>
                 <br>Enigma Bridge
             </a>
-            <a href="https://enigmabridge.freshdesk.com/helpdesk/tickets/new" class="btn btn-sq btn-danger"
-               style="width:150px">
+            <a href="https://enigmabridge.freshdesk.com/helpdesk/tickets/new" class="btn btn-sq btn-danger">
                 <i class="fa fa-envelope-o fa-3x"></i><br/>
                 <br>Request Help
             </a>
