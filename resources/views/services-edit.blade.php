@@ -86,7 +86,7 @@
     <hr class="separator">
     <div class="row">
         <div class="col-lg-12">
-            <div>
+            <div class="services-edit">
 
 
                 {!! Form::open(['action' => ['ServiceRegisterController@store'], 'method' => 'post', 'role'=> 'form', 'class' => 'form']) !!}

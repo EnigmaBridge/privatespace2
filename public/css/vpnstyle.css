@@ -129,3 +129,10 @@ button {
 
 }
 
+.services-edit .add-more {
+    min-width: 100px;
+}
+
+.services-edit .remove {
+    min-width: 100px;
+}
