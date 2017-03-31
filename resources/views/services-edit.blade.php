@@ -102,7 +102,7 @@
                             </span>
                             <input type="text" name="tile_name[]" class="form-control tile-name" placeholder="Enter Name Here">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
-                            <input type="text" name="tile_link[]" class="form-control tile-link" placeholder="Enter URL">
+                            <input type="text" name="tile_link[]" class="form-control tile-link" placeholder="Enter URL with http(s)://">
                             <div class="input-group-btn">
                                 <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                             </div>
@@ -120,7 +120,7 @@
                                    placeholder="Enter Name Here" value="{{ $v->tile_name }}">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
                             <input type="text" name="tile_link[]" class="form-control tile-link"
-                                   placeholder="Enter URL" value="{{ $v->tile_link }}">
+                                   placeholder="Enter URL with http(s)://" value="{{ $v->tile_link }}">
                             <div class="input-group-btn">
                                 <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                             </div>
@@ -138,7 +138,7 @@
                             </span>
                         <input type="text" name="tile_name[]" class="form-control tile-name" placeholder="Enter Name Here">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
-                        <input type="text" name="tile_link[]" class="form-control tile-link" placeholder="Enter URL">
+                        <input type="text" name="tile_link[]" class="form-control tile-link" placeholder="Enter URL with http(s)://">
                         <div class="input-group-btn">
                             <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>
                         </div>
