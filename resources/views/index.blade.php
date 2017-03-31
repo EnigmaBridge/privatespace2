@@ -39,7 +39,7 @@
     <script id="connectedTpl" type="text/x-handlebars-template">
         <table class="table table-hover">
             <thead>
-            <th>ID</th>
+            <th>Device (click to connect)</th>
             <th>Local IP</th>
             <th>Connected since</th>
             <th>Data today</th>
