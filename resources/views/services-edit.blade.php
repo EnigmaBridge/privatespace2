@@ -34,6 +34,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    {{--TODO: upgrade with https://jqueryui.com/sortable/#placeholder--}}
     <script>
         $(document).ready(function() {
             $(".add-more").click(function(){
