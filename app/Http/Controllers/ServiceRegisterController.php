@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 
+use App\ServiceInfo;
+
 class ServiceRegisterController extends Controller
 {
      //use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -43,13 +45,14 @@ class ServiceRegisterController extends Controller
         $user = Auth::user();
         $loggedIn = Auth::check();
 
-        // TODO: load tiles
+        // Load existing tiles
+        $service_info = ServiceInfo::orderBy('tile_order')->get();
 
         $data = [
             'private_space' => env('APP_PRIVATE_SPACE_NAME'),
             'user' => $user,
             'logged_in' => $loggedIn,
-            'tiles' => []
+            'tiles' => $service_info
         ];
 
         return view('services-edit', $data);
@@ -76,21 +79,19 @@ class ServiceRegisterController extends Controller
                 continue;
             }
 
-            $obj = new \stdClass();
-            $obj->link = $tile_link[$i];
-            $obj->name = $tile_name[$i];
-            $obj->icon = $tile_icon[$i];
+            $obj = array();
+            $obj['tile_link'] = $tile_link[$i];
+            $obj['tile_name'] = $tile_name[$i];
+            $obj['tile_icon'] = $tile_icon[$i];
+            $obj['tile_order'] = $i;
             array_push($objects, $obj);
         }
 
-        // TODO: persist
+        // Removing all existing tiles
+        ServiceInfo::truncate();
 
-        Log::info('Req: ' . var_export($_REQUEST, true));
-        Log::info('obj: ' . var_export($objects, true));
-        $data = [
-            'tiles' => $objects
-        ];
-
-        return view('services-edit', $data);
+        // Store new objects here.
+        ServiceInfo::insert($objects);
+        return $this->show();
     }
 }

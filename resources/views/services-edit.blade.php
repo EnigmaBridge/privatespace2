@@ -111,13 +111,13 @@
                         <div class="control-group input-group" style="margin-top:10px">
                             <span class="input-group-btn">
                             <button class="btn btn-default tile-icon" role="iconpicker" name="tile_icon[]"
-                                    data-iconset="fontawesome" data-icon="{{ $v->icon }}"></button>
+                                    data-iconset="fontawesome" data-icon="{{ $v->tile_icon }}"></button>
                             </span>
                             <input type="text" name="tile_name[]" class="form-control tile-name"
-                                   placeholder="Enter Name Here" value="{{ $v->name }}">
+                                   placeholder="Enter Name Here" value="{{ $v->tile_name }}">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
                             <input type="text" name="tile_link[]" class="form-control tile-link"
-                                   placeholder="Enter URL" value="{{ $v->link }}">
+                                   placeholder="Enter URL" value="{{ $v->tile_link }}">
                             <div class="input-group-btn">
                                 <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                             </div>
@@ -145,6 +145,7 @@
                 {{--{!! Form::text('prelink', null, ['placeholder' => 'Link / URL', 'class' => 'form-control']) !!}--}}
                 <div class="form-group">
                     {!! Form::submit('Update', ['class' => 'btn btn-success submit']) !!}
+                    <a href="https://{{ env('APP_PRIVATE_SPACE_NAME') }}" class="btn btn-default">Back</a>
                 </div>
 
                 {!! Form::close() !!}

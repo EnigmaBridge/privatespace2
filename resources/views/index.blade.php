@@ -8,6 +8,13 @@
     <title>Private Space - {{ $private_space }}</title>
     <link rel="shortcut icon" href="./images/favicon.png" type="image/png" />
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -87,6 +94,13 @@
                     <br>Manage Users
                 </a>
 
+                @foreach($tiles as $k => $v)
+                    <a href="{{ $v->tile_link }}" class="btn btn-sq-lg btn-success" id="spacelink"
+                       style="width:150px">
+                        <i class="fa {{ $v->tile_icon }} fa-5x"></i><br/>
+                        <br>{{ $v->tile_name }}
+                    </a>
+                @endforeach
 
                 @if (Gate::allows('is-admin'))
                     <hr class="separator">

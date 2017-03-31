@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ServiceInfo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -38,11 +39,15 @@ class IndexController extends Controller
         $loggedIn = Auth::check();
         Log::info('Index shown, user: ' . $user->getAuthIdentifierName() . ' logged in: ' . $loggedIn);
 
+        // Load existing tiles
+        $service_info = ServiceInfo::orderBy('tile_order')->get();
+
         $data = [
             'private_space' => env('APP_PRIVATE_SPACE_NAME'),
             'user' => $user,
             'logged_in' => $loggedIn,
-        ]; // ['user' => User::findOrFail($id)]
+            'tiles' => $service_info
+        ];
 
         return view('index', $data);
     }
