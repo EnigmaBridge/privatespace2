@@ -133,7 +133,7 @@
     <div id="userStats" style="display: none">
         <hr class="separator">
         <div class="row">
-            <h3>Private space users</h3>
+            <h3>Private space devices</h3>
             <div class="table-responsive">
                 <div id="statsPlaceholder"></div>
             </div>
