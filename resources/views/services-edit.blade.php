@@ -78,7 +78,7 @@
 
     <h1 style="color:#00a7d7">Cloud Private Space</h1>
     <h3>{{ env('APP_PRIVATE_SPACE_NAME') }}</h3>
-    <p>Service registry edit
+    <p>Service list management
         <br/><br/>
     </p>
 
