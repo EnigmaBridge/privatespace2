@@ -35,6 +35,8 @@
     <![endif]-->
 
     {{--TODO: upgrade with https://jqueryui.com/sortable/#placeholder--}}
+    {{--TODO: http://www.jqueryrain.com/?91q0XJ1e--}}
+    {{--TODO: http://bootstrap-colorselector.flaute.com/--}}
     <script>
         $(document).ready(function() {
             $(".add-more").click(function(){
