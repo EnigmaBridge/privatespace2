@@ -18,5 +18,6 @@ Route::get('/old', function () {
 Route::get('/', 'IndexController@show');
 Route::get('/services-edit', 'ServiceRegisterController@show');
 Route::post('/services-edit', 'ServiceRegisterController@store');
+Route::get('/stats.json', 'StatsController@show');
 
 
