@@ -31,7 +31,7 @@ class ServiceRegisterController extends Controller
     }
 
     /**
-     * Show the main index page
+     * Show the service edit page.
      *
      * @return Response
      */
