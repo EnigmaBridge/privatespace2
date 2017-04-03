@@ -37,7 +37,7 @@ class IndexController extends Controller
     {
         $user = Auth::user();
         $loggedIn = Auth::check();
-        Log::info('Index shown, user: ' . $user->getAuthIdentifierName() . ' logged in: ' . $loggedIn);
+        Log::info('Index shown, user: ' . (empty($user) ? "-" : $user->getAuthIdentifierName()) . ' logged in: ' . $loggedIn);
 
         // Load existing tiles
         $service_info = ServiceInfo::orderBy('tile_order')->get();
