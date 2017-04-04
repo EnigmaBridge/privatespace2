@@ -14,6 +14,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 
 class IndexController extends Controller
@@ -35,6 +36,10 @@ class IndexController extends Controller
      */
     public function show()
     {
+        if (Gate::denies('is-user')) {
+            return abort(403, 'Unauthorized action.');
+        }
+
         $user = Auth::user();
         $loggedIn = Auth::check();
         Log::info('Index shown, user: ' . (empty($user) ? "-" : $user->getAuthIdentifierName()) . ' logged in: ' . $loggedIn);

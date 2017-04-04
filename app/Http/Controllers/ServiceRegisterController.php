@@ -37,6 +37,10 @@ class ServiceRegisterController extends Controller
      */
     public function show()
     {
+        if (Gate::denies('is-user')) {
+            return abort(403);
+        }
+
         if (Gate::denies('is-admin')) {
             Log::info('Non-admin user editing services');
             return redirect()->intended('/');
