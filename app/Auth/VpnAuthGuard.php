@@ -21,6 +21,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
 
 class VpnAuthGuard implements Guard
@@ -94,6 +95,25 @@ class VpnAuthGuard implements Guard
     }
 
     /**
+     * If VPN ip network is configured in the config file, the IP match is checked.
+     * @throws AuthIPMismatchException if IP is configured and do not match
+     */
+    private function checkIp(){
+        $vpn_net_addr = env('APP_VPN_NET_ADDR');
+        $vpn_net_size = env('APP_VPN_NET_SIZE');
+        if (empty($vpn_net_addr) || empty($vpn_net_size)){
+            return -1;
+        }
+
+        $vpn_check = sprintf("%s/%s", $vpn_net_addr, $vpn_net_size);
+        if (IpUtils::checkIp($_SERVER['REMOTE_ADDR'], $vpn_check)) {
+            return 1;
+        }
+
+        throw new AuthIPMismatchException();
+    }
+
+    /**
      * Contacts user server, returns user object.
      * Throws exception on non-auth.
      * @param $uid
@@ -153,6 +173,8 @@ class VpnAuthGuard implements Guard
         }
 
         try{
+            $this->checkIp();
+
             $decoded = $this->checkVpnAuth(null);
             if (!$this->checkResponse($decoded)) {
                 return null;
@@ -166,6 +188,8 @@ class VpnAuthGuard implements Guard
             return $this->user;
 
         } catch (AuthServerFailException $e){
+            return null;
+        } catch (AuthIPMismatchException $e){
             return null;
         }
     }
