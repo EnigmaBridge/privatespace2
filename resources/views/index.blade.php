@@ -84,8 +84,7 @@
         <div class="col-lg-12">
             <div>
 
-                <a href="https://{{ $private_space }}:8442" class="btn btn-sq-lg btn-success" id="spacelink"
-                   style="width:150px">
+                <a href="https://{{ $private_space }}:8442" class="btn btn-sq-lg btn-success" id="spacelink">
                     <i class="fa fa-bolt fa-5x"></i><br/>
                     <br>Manage Users
                 </a>
