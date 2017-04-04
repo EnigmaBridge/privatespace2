@@ -36,7 +36,7 @@
 
     <h1 style="color:#00a7d7">Cloud Private Space</h1>
     <h3>403 - Unauthorized</h3>
-    <p>TPlease connect using your key to enter. Unauthorized access strictly prohibited.
+    <p>Please connect using your key to enter. Unauthorized access strictly prohibited.
         <br/><br/>
     </p>
 
