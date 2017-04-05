@@ -34,11 +34,24 @@
         </div>
     </div>
 
-    <h1 style="color:#00a7d7">Cloud Private Space</h1>
+    <h1 style="color:#00a7d7">Welcome to Private Spaces.</h1>
     <h3>403 - Unauthorized</h3>
-    <p>Please connect using your key to enter. Unauthorized access strictly prohibited.
-        <br/><br/>
-    </p>
+    <div class="row">
+        <div class="col-sm-12">
+            <p>
+                Please connect using your key to enter. Unauthorized access strictly prohibited.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p>
+                If you believe you have the right to access, please get in touch with the Private Space administrator.
+                Alternatively, you can request support from Enigma Bridge Ltd via their support
+                system at <a href="https://enigmabridge.freshdesk.com/helpdesk/tickets/new">Enigma Bridge Helpdesk</a>
+            </p>
+        </div>
+    </div>
 
     <hr class="separator">
     <div class="row privatespace-services">
