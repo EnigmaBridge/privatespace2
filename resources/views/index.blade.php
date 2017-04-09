@@ -72,10 +72,10 @@
         </div>
     </div>
 
-    <h1 style="color:#00a7d7">Cloud Private Space</h1>
+    <h1 style="color:#00a7d7">Private Space</h1>
     <h3>{{ $private_space }}</h3>
     <p>This is the main page of your Private Space. It contains direct links to all services this Private Space
-        contains.
+        provides.
         <br/><br/>
     </p>
 
@@ -86,7 +86,7 @@
 
                 <a href="https://{{ $private_space }}:8442" class="btn btn-sq-lg btn-success" id="spacelink">
                     <i class="fa fa-bolt fa-5x"></i><br/>
-                    <br>Manage Users
+                    <br>Manage Devices
                 </a>
 
                 @foreach($tiles as $k => $v)
